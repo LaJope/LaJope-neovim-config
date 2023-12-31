@@ -60,7 +60,7 @@ return require('packer').startup(function(use)
     }
     -- use('mfussenegger/nvim-dap')
     use('jay-babu/mason-nvim-dap.nvim')
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
     -- Breaks stuff. Displays keymaps
     -- use {
