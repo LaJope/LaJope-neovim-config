@@ -62,6 +62,26 @@ return require('packer').startup(function(use)
     use('jay-babu/mason-nvim-dap.nvim')
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
+    use('alec-gibson/nvim-tetris')
+    use('seandewar/nvimesweeper')
+    use {
+        'alanfortlink/blackjack.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+    }
+
+    use {
+        'jim-fx/sudoku.nvim',
+        cmd = "Sudoku",
+        config = function()
+            require("sudoku").setup({
+                -- configuration ...
+            })
+        end
+    }
+
+    use('lewis6991/gitsigns.nvim')
+    use('romgrk/barbar.nvim')
+
     -- Breaks stuff. Displays keymaps
     -- use {
     --     "folke/which-key.nvim",
