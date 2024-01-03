@@ -119,8 +119,8 @@ vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
 
 
 -- dap
--- vim.keymap.set('n', '<leader>db', vim.cmd.DapToggleBreakpoint)
--- vim.keymap.set('n', '<leader>dr', vim.cmd.DapContinue)
+vim.keymap.set('n', '<leader>db', vim.cmd.DapToggleBreakpoint)
+vim.keymap.set('n', '<leader>dr', vim.cmd.DapContinue)
 
 -- Comment (default mappings)
 --
@@ -207,9 +207,3 @@ vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
 --
 -- -- Magic buffer-picking mode
 -- vim.keymap.set('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
---
--- -- Sort automatically by...
--- vim.keymap.set('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
--- vim.keymap.set('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
--- vim.keymap.set('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
--- vim.keymap.set('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
