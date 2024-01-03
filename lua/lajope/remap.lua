@@ -50,6 +50,8 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
+-- unbind Alt-s
+vim.keymap.set('n', '<A-s>', '<nop>')
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
@@ -65,9 +67,21 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- make the current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
+-- cmd commands
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "Packer.lua",
+    callback = function()
+        vim.api.nvim_set_keymap("n", "<leader>pc", ":so<CR>:PackerSync<CR>", { buffer = true })
+    end,
+})
+-- vim.keymap.set('n', '<leader>pc', function()
+--    vim.cmd('so')
+--    vim.cmd('PackerSync')
+-- end)
+
 
 vim.keymap.set('n', '<leader>wh', vim.cmd.sp) -- split horizontally
 vim.keymap.set('n', '<leader>wv', vim.cmd.vs) -- split vertically
@@ -121,6 +135,8 @@ vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
 -- dap
 vim.keymap.set('n', '<leader>db', vim.cmd.DapToggleBreakpoint)
 vim.keymap.set('n', '<leader>dr', vim.cmd.DapContinue)
+
+
 
 -- Comment (default mappings)
 --
