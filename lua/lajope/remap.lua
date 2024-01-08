@@ -54,7 +54,17 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set('n', '<A-s>', '<nop>')
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- vim.keymap.set("n", "<leader>f", vim.cmd.LspZeroFormat)
+vim.keymap.set('n', '<leader>f', function()
+    if vim.fn.exists(':LspZeroFormat') == 1 then
+        vim.cmd('LspZeroFormat')
+    else
+        vim.lsp.buf.format()
+    end
+end, { desc = 'Format code with LspZeroFormat or LSP fallback' })
+
+
 
 --vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 --vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -71,16 +81,12 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = "Packer.lua",
-    callback = function()
-        vim.api.nvim_set_keymap("n", "<leader>pc", ":so<CR>:PackerSync<CR>", { buffer = true })
-    end,
-})
--- vim.keymap.set('n', '<leader>pc', function()
---    vim.cmd('so')
---    vim.cmd('PackerSync')
--- end)
+vim.keymap.set('n', '<leader>pc', function()
+    vim.cmd("so")
+    if vim.fn.exists('PackerSync') == 1 then
+        vim.cmd('PackerSync')
+    end
+end)
 
 
 vim.keymap.set('n', '<leader>wh', vim.cmd.sp) -- split horizontally

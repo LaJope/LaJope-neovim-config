@@ -6,19 +6,14 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+
     -- use('nvim-lua/plenary.nvim')
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    -- use { 'rebelot/kanagawa.nvim' }
-    -- use { 'Mofiqul/vscode.nvim' }
-    -- use { 'kvrohit/rasmus.nvim' }
     use { 'sainnhe/gruvbox-material' }
-
-
-
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
@@ -53,9 +48,7 @@ return require('packer').startup(function(use)
 
     use {
         'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
+        config = function() require('Comment').setup() end
     }
     use('nvim-tree/nvim-web-devicons')
     use('nvim-tree/nvim-tree.lua')
@@ -68,30 +61,34 @@ return require('packer').startup(function(use)
     use('jay-babu/mason-nvim-dap.nvim')
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
-    use('alec-gibson/nvim-tetris')
-    use('seandewar/nvimesweeper')
-    use {
-        'alanfortlink/blackjack.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
-    }
-
-    use {
-        'jim-fx/sudoku.nvim',
-        cmd = "Sudoku",
-        config = function()
-            require("sudoku").setup({
-                -- configuration ...
-            })
-        end
-    }
-
     use('lewis6991/gitsigns.nvim')
+    -- MIGRATE TO akinsho/bufferline.nvim       URL: https://github.com/akinsho/bufferline.nvim
     use('romgrk/barbar.nvim')
 
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+
+    use('tpope/vim-obsession')
+
+    use {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            -- your configuration comes here
+        },
+    }
+
+    use {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            -- your configuration comes here
+        },
+    }
+
+    -- use('Civitasv/cmake-tools.nvim') !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 
 
     -- Breaks stuff. Displays keymaps

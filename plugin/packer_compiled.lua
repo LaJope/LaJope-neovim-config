@@ -90,11 +90,6 @@ _G.packer_plugins = {
     path = "/home/lajope/.local/share/nvim/site/pack/packer/start/barbar.nvim",
     url = "https://github.com/romgrk/barbar.nvim"
   },
-  ["blackjack.nvim"] = {
-    loaded = true,
-    path = "/home/lajope/.local/share/nvim/site/pack/packer/start/blackjack.nvim",
-    url = "https://github.com/alanfortlink/blackjack.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/lajope/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -191,11 +186,6 @@ _G.packer_plugins = {
     path = "/home/lajope/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-tetris"] = {
-    loaded = true,
-    path = "/home/lajope/.local/share/nvim/site/pack/packer/start/nvim-tetris",
-    url = "https://github.com/alec-gibson/nvim-tetris"
-  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/lajope/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -211,11 +201,6 @@ _G.packer_plugins = {
     path = "/home/lajope/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
-  nvimesweeper = {
-    loaded = true,
-    path = "/home/lajope/.local/share/nvim/site/pack/packer/start/nvimesweeper",
-    url = "https://github.com/seandewar/nvimesweeper"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/lajope/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -226,19 +211,20 @@ _G.packer_plugins = {
     path = "/home/lajope/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["sudoku.nvim"] = {
-    commands = { "Sudoku" },
-    config = { "\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vsudoku\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/lajope/.local/share/nvim/site/pack/packer/opt/sudoku.nvim",
-    url = "https://github.com/jim-fx/sudoku.nvim"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/lajope/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["todo-comments.nvim"] = {
+    loaded = true,
+    path = "/home/lajope/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
+    url = "https://github.com/folke/todo-comments.nvim"
+  },
+  ["trouble.nvim"] = {
+    loaded = true,
+    path = "/home/lajope/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
   },
   undotree = {
     loaded = true,
@@ -249,6 +235,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/lajope/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-obsession"] = {
+    loaded = true,
+    path = "/home/lajope/.local/share/nvim/site/pack/packer/start/vim-obsession",
+    url = "https://github.com/tpope/vim-obsession"
   }
 }
 
@@ -261,18 +252,6 @@ time([[Config for Comment.nvim]], false)
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
 time([[Config for nvim-autopairs]], false)
-
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'Sudoku', function(cmdargs)
-          require('packer.load')({'sudoku.nvim'}, { cmd = 'Sudoku', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'sudoku.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('Sudoku ', 'cmdline')
-      end})
-time([[Defining lazy-load commands]], false)
-
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
